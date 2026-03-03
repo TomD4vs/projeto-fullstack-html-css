@@ -46,7 +46,7 @@ header img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 3px solid rgb(25, 21, 21);
+  border: 3px solid #191515;
   object-fit: cover;
   margin-bottom: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -154,9 +154,9 @@ main a {
 }
 
 main a:hover {
-  background-color: #45559b;
+  background-color: #292323;
   color: white;
-  border-color: #45559b;
+  border-color: #292323;
   transform: scale(1.02);
 }
 
@@ -190,7 +190,7 @@ footer {
 }
 
 footer:hover {
-  background-color: #4469e3;
+  background-color: #515151;
   transform: scale(1.02);
 }
 
@@ -206,7 +206,7 @@ footer:hover i {
 footer span h2 {
   font-size: 16px;
   margin-bottom: 5px;
-  color: #858197;
+  color: #9b97ad;
 }
 
 footer:hover span h2 {
@@ -215,7 +215,7 @@ footer:hover span h2 {
 
 footer span p {
   font-size: 13px;
-  color: #666;
+  color: #ffffff;
   line-height: 1.4;
 }
 
