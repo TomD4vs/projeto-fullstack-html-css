@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 28px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
+    animation: up .3s ease;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(18px)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #999;
+    font-size: 13px;
+    text-decoration: none;
+    margin-bottom: 18px;
+}
+
+.back:hover {
+    color: #333;
+}
+
+.modal h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.modal>p {
+    font-size: 14px;
+    color: #231e1e;
+    margin-bottom: 24px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.field label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #231e1e;
+}
+
+.field input,
+.field select,
+.field textarea {
+    border: 1.5px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 10px 13px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .2s;
+    color: #222;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: #111;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+.field .err {
+    font-size: 11px;
+    color: #e05c5c;
+    min-height: 14px;
+}
+
+.invalid {
+    border-color: #e05c5c !important;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 400px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 13px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button[type="submit"]:hover {
+    background: #333;
+}
+
+button[type="submit"]:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.feedback {
+    display: none;
+    margin-top: 12px;
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.feedback.ok {
+    background: #edfaf3;
+    color: #2d8a5e;
+}
+
+.feedback.fail {
+    background: #fdecea;
+    color: #c0392b;
+}
