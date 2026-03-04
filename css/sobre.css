@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 28px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
+    animation: up .3s ease;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(18px)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.profile img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #111;
+}
+
+.profile h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: #2d8a5e;
+    background: #edfaf3;
+    padding: 3px 9px;
+    border-radius: 99px;
+}
+
+.bio {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.bar {
+    flex: 1;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.bar div {
+    height: 100%;
+    background: #111;
+    border-radius: 99px;
+    transition: width 1s ease;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.socials {
+    display: flex;
+    gap: 10px;
+}
+
+.socials a {
+    color: #999;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.socials a:hover {
+    color: #111;
+}
+
+.btn-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background .2s;
+}
+
+.btn-contact:hover {
+    background: #333;
+}
