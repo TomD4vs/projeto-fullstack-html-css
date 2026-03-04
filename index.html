@@ -5,28 +5,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linktree | Elyton Moreira</title>
-
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
+    <link rel="stylesheet" href="./css/contato.css" />
+    <link rel="stylesheet" href="./css/sobre.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
+
     <div class="content">
         <header>
-            <img src="https://geekculture.co/wp-content/uploads/2023/10/solo-leveling-live-action-2.jpg"/>
+            <img src="https://geekculture.co/wp-content/uploads/2023/10/solo-leveling-live-action-2.jpg" />
             <h1>Elyton</h1>
-            <p>
-                Aluno do curso de Desenvolvimento Web Full Stack ITEAM
-            </p>
+            <p>Aluno do curso de Desenvolvimento Web Full Stack ITEAM</p>
         </header>
         <div class="content_main">
             <ul>
-                <li><a href="https://github.com/TomD4vs" target="_blank" class="link-github"><i class="fa-brands fa-github"></i></a></li>
-                <li><a href="https://br.linkedin.com/" class="link-linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
-                <li><a href="https://instagram.com/elytonmoreira" class="link-instagram" target="_blank" ><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="https://twitter.com" class="link-twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a href="https://youtube.com" class="link-youtube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a href="https://github.com/TomD4vs" target="_blank" class="link-github"><i
+                            class="fa-brands fa-github"></i></a></li>
+                <li><a href="https://br.linkedin.com/" class="link-linkedin" target="_blank"><i
+                            class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/elytonmoreira" class="link-instagram" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com" class="link-twitter" target="_blank"><i
+                            class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="https://youtube.com" class="link-youtube" target="_blank"><i
+                            class="fa-brands fa-youtube"></i></a></li>
             </ul>
             <main>
                 <a href="#">
@@ -39,18 +43,18 @@
                     <p>Portfolio</p>
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
-                <a href="#">
+                <a href="#" onclick="abrirModal('sobre.html', 'modal-sobre', event)">
                     <i class="fa-solid fa-user"></i>
                     <p>Sobre</p>
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
-                <a href="tel:+559599999999">
+                <a href="#" onclick="abrirModal('contato.html', 'modal-contato', event)">
                     <i class="fa-solid fa-phone"></i>
                     <p>Contato</p>
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
             </main>
-            <footer onclick="location.href='mailto:email@exemple.com'">
+            <footer onclick="abrirModal('contato.html', 'modal-contato', event)">
                 <i class="fa-regular fa-envelope"></i>
                 <span>
                     <h2>Junte-se a minha comunidade.</h2>
@@ -59,6 +63,61 @@
             </footer>
         </div>
     </div>
+
+    <div id="modal-contato" class="modal-overlay"></div>
+    <div id="modal-sobre" class="modal-overlay"></div>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/contato.js"></script>
+    <script>
+        async function abrirModal(arquivo, id, e) {
+            if (e) e.preventDefault();
+            const wrapper = document.getElementById(id);
+
+            if (!wrapper.dataset.carregado) {
+                const res = await fetch(arquivo);
+                const html = await res.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+
+                wrapper.innerHTML = `
+          <div style="position:relative;">
+            <button class="btn-fechar" onclick="fecharModal('${id}')">&times;</button>
+            ${doc.body.innerHTML}
+          </div>`;
+
+                if (id === 'modal-contato') initContato(wrapper);
+
+                wrapper.dataset.carregado = 'true';
+            }
+
+            wrapper.classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            if (id === 'modal-sobre') {
+                setTimeout(() => {
+                    wrapper.querySelectorAll('.bar div[data-w]').forEach(el =>
+                        el.style.width = el.dataset.w + '%'
+                    );
+                }, 100);
+            }
+        }
+
+        function fecharModal(id) {
+            document.getElementById(id).classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Fecha clicando no fundo escuro
+        document.querySelectorAll('.modal-overlay').forEach(w =>
+            w.addEventListener('click', e => { if (e.target === w) fecharModal(w.id); })
+        );
+
+        // Fecha com ESC
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape')
+                document.querySelectorAll('.modal-overlay.open').forEach(m => fecharModal(m.id));
+        });
+    </script>
 </body>
 
 </html>
